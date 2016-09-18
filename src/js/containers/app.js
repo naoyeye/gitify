@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchNotifications } from '../actions';
 import Navigation from '../components/navigation';
 import NetworkStatus from '../components/network-status';
-import SearchBar from '../components/search';
+// import SearchBar from '../components/search';
 
 export class App extends React.Component {
   constructor(props) {
@@ -27,11 +27,11 @@ export class App extends React.Component {
     window.removeEventListener('online', this.handleNetworkStatus);
   }
 
-  toggleSearch() {
-    this.setState({
-      showSearch: !this.state.showSearch
-    });
-  }
+  // toggleSearch() {
+  //   this.setState({
+  //     showSearch: !this.state.showSearch
+  //   });
+  // }
 
   handleNetworkStatus() {
     if (navigator.onLine) {
@@ -52,12 +52,12 @@ export class App extends React.Component {
     }
 
     return (
-      <div>
+      <div className="container">
         <Navigation
           location={this.props.location}
-          toggleSearch={this.toggleSearch.bind(this)}
+          // toggleSearch={this.toggleSearch.bind(this)}
           showSearch={this.state.showSearch} />
-        <SearchBar showSearch={this.state.showSearch} />
+        {/*<SearchBar showSearch={this.state.showSearch} />*/}
         {this.props.children}
       </div>
     );

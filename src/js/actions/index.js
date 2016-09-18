@@ -47,22 +47,31 @@ export const NOTIFICATIONS_REQUEST = 'NOTIFICATIONS_REQUEST';
 export const NOTIFICATIONS_SUCCESS = 'NOTIFICATIONS_SUCCESS';
 export const NOTIFICATIONS_FAILURE = 'NOTIFICATIONS_FAILURE';
 export function fetchNotifications() {
+  // console.log('fetchNotifications!!');
   return {
-    [CALL_API]: {
-      endpoint: 'https://api.github.com/notifications',
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Cache-Control': 'no-cache',
-        'Content-Type': 'application/json'
-      },
-      types: [NOTIFICATIONS_REQUEST, {
-        type: NOTIFICATIONS_SUCCESS,
-        payload: (action, state, res) => getJSON(res)
-      }, {
-        type: NOTIFICATIONS_FAILURE,
-        payload: (action, state, res) => getJSON(res)
-      }]
+    // [CALL_API]: {
+    //   endpoint: 'https://api.github.com/notifications',
+    //   method: 'GET',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Cache-Control': 'no-cache',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   types: [NOTIFICATIONS_REQUEST, {
+    //     type: NOTIFICATIONS_SUCCESS,
+    //     payload: (action, state, res) => getJSON(res)
+    //   }, {
+    //     type: NOTIFICATIONS_FAILURE,
+    //     payload: (action, state, res) => getJSON(res)
+    //   }]
+    // }
+    type: NOTIFICATIONS_SUCCESS,
+    payload: {
+      'list': [
+        'https://img3.doubanio.com/view/status/raw/public/ae4d4e4cbebf6c5.jpg',
+        'https://img3.doubanio.com/view/status/raw/public/ebb8c2bbe859aa3.jpg',
+        'https://img1.doubanio.com/view/status/raw/public/401531c5e63c97b.jpg'
+      ]
     }
   };
 };

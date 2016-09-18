@@ -8,6 +8,7 @@ var sass = require('gulp-sass');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
 var watchify = require('watchify');
+var electron = require('electron-connect').server.create();
 
 var options = {
   browserifyOpts: {
@@ -59,6 +60,12 @@ gulp.task('watch:scss', function () {
   gulp.watch('./src/scss/app.scss', ['build:scss']);
 });
 
+gulp.task('watch:electron', function () {
+  electron.start();
+  gulp.watch(['./src/scss/app.scss', './src/js/**/*.js', './src/js/*.js'], electron.restart);
+  gulp.watch(['./dist/**/*.{html,js,css}'], electron.reload);
+});
+
 gulp.task('copy:fonts', function () {
   return gulp.src([
     './node_modules/font-awesome/fonts/*.+(eot|svg|ttf|woff|woff2|otf)',
@@ -71,7 +78,7 @@ gulp.task('apply-prod-environment', function() {
   process.env.NODE_ENV = 'production';
 });
 
-gulp.task('watch', ['watch:js', 'watch:scss']);
+gulp.task('watch', ['watch:electron', 'watch:js', 'watch:scss']);
 gulp.task('build', ['copy:fonts', 'build:js', 'build:scss']);
 gulp.task('release', ['apply-prod-environment', 'build']);
 gulp.task('default', ['build']);

@@ -129,10 +129,15 @@ app.on('ready', function() {
 
   function initWindow () {
     var defaults = {
-      width: 400,
       height: 350,
+      width: 300,
+      // minHeight: 100,
+      // maxHeight: 400,
       show: false,
+      useContentSize: false,
       frame: false,
+      hasShadow: false,
+      transparent: true,
       resizable: false,
       webPreferences: {
         overlayScrollbars: true
@@ -145,6 +150,7 @@ app.on('ready', function() {
     appIcon.window.on('blur', hideWindow);
     appIcon.window.setVisibleOnAllWorkspaces(true);
 
+    appIcon.window.webContents.openDevTools();
     appIcon.window.webContents.on('devtools-opened', (event, deviceList, callback) => {
       appIcon.window.setSize(800, 600);
       appIcon.window.setResizable(true);

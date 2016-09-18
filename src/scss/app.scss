@@ -92,16 +92,55 @@ $alert-danger-text: $white;
 html,
 body {
   -webkit-user-select: none;
+  background: none;
 }
 
 body {
   cursor: default;
+  padding: 15px 5px 5px 5px;
 }
 
 body,
 html {
   height: 100%;
   overflow: hidden;
+}
+
+#wrapper {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+
+  &:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: -8px;
+    margin-left: -10px;
+    background: $white;
+    transform: rotate(45deg);
+    border-radius: 4px 0 0;
+    box-shadow: -2px -2px 4px 0 rgba(0, 0, 0, .2);
+
+  }
+}
+
+#gitify {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  background: $white;
+  border-radius: 8px;
+  box-shadow: 0 0 7px 0px rgba(0, 0, 0, .5);
+  // min-height: 310px;
+  overflow: hidden;
+}
+
+.contatiner {
+  height: 100%;
 }
 
 .main-container {
@@ -190,46 +229,69 @@ input {
 
 /* @group Navigation */
 
+.nav-wrap {
+  position: relative;
+  z-index: 1;
+  height: $navbar-height;
+}
+
+.test-content {
+  height: 100%;
+  color: #333;
+  font-size: 18px;
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
 .navbar {
+  position: relative;
+  z-index: 2;
   height: $navbar-height;
   color: $white;
+  border-bottom: 1px solid $gray-lighter;
+  border-radius: 8px 8px 0 0;
+  background: $white;
 
-  .navbar-brand {
-    display: inline-block;
-    margin: 0 5px 2px;
-    max-height: 25px;
 
-    &.logo-spin {
-      -webkit-animation: spin 1s infinite linear;
+  // .navbar-brand {
+  //   display: inline-block;
+  //   margin: 0 5px 2px;
+  //   max-height: 25px;
 
-      @-webkit-keyframes spin {
-        0%   {
-          transform: rotate(0deg);
-        }
+  //   &.logo-spin {
+  //     -webkit-animation: spin 1s infinite linear;
 
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    }
-  }
+  //     @-webkit-keyframes spin {
+  //       0%   {
+  //         transform: rotate(0deg);
+  //       }
 
-  .tag {
-    @include border-radius(0);
+  //       100% {
+  //         transform: rotate(360deg);
+  //       }
+  //     }
+  //   }
+  // }
 
-    position: relative;
-    top: -$navbar-padding-y;
-    left: 5px;
-    float: left;
-    margin-right: .95rem;
-    min-width: 1.5rem;
-    height: $navbar-height;
-    line-height: 29px;
-  }
+  // .tag {
+  //   @include border-radius(0);
+
+  //   position: relative;
+  //   top: -$navbar-padding-y;
+  //   left: 5px;
+  //   float: left;
+  //   margin-right: .95rem;
+  //   min-width: 1.5rem;
+  //   height: $navbar-height;
+  //   line-height: 29px;
+  // }
 
   .nav-link {
     padding-top: .3rem;
     font-size: .95rem;
+    color: $white;
   }
 }
 

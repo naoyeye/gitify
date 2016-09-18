@@ -9,26 +9,26 @@ export default store => next => action => {
 
   switch (action.type) {
 
-    case NOTIFICATIONS_SUCCESS:
-      var previousNotifications = notificationsState.response.map(obj => obj.id);
-      var newNotifications = _.filter(action.payload, function (obj) {
-        return !_.contains(previousNotifications, obj.id);
-      });
+    // case NOTIFICATIONS_SUCCESS:
+    //   var previousNotifications = notificationsState.response.map(obj => obj.id);
+    //   var newNotifications = _.filter(action.payload, function (obj) {
+    //     return !_.contains(previousNotifications, obj.id);
+    //   });
 
-      Helpers.updateTrayIcon(action.payload.length);
-      NativeNotifications.setup(newNotifications, settings);
-      break;
+    //   Helpers.updateTrayIcon(action.payload.length);
+    //   NativeNotifications.setup(newNotifications, settings);
+    //   break;
 
-    case MARK_NOTIFICATION_SUCCESS:
-      var previousNotifications = notificationsState.response.map(obj => obj.id);
-      Helpers.updateTrayIcon(previousNotifications.length - 1);
-      break;
+    // case MARK_NOTIFICATION_SUCCESS:
+    //   var previousNotifications = notificationsState.response.map(obj => obj.id);
+    //   Helpers.updateTrayIcon(previousNotifications.length - 1);
+    //   break;
 
-    case MARK_REPO_NOTIFICATION_SUCCESS:
-      var previousNotifications = notificationsState.response;
-      var newNotifications = _.reject(previousNotifications, (obj) => obj.repository.id === action.meta.repoId);
-      Helpers.updateTrayIcon(newNotifications.length);
-      break;
+    // case MARK_REPO_NOTIFICATION_SUCCESS:
+    //   var previousNotifications = notificationsState.response;
+    //   var newNotifications = _.reject(previousNotifications, (obj) => obj.repository.id === action.meta.repoId);
+    //   Helpers.updateTrayIcon(newNotifications.length);
+    //   break;
   }
 
   return next(action);
